@@ -22,6 +22,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 =======
 #include"Fossati.h"
 #include"dipirro.h"
+#include"Pandolfini.h"
 >>>>>>> 4cc6699e57cb010f8743a7d5556cee4a21c3fbff
 >>>>>>> c06b4ee2c22b5b6de9226f59a3057e3f93dee51f
 using namespace std;
