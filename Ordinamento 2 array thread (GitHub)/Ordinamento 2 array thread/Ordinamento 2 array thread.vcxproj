@@ -148,11 +148,13 @@
   <ItemGroup>
     <ClCompile Include="Bardazzi.cpp" />
     <ClCompile Include="Fiordi.cpp" />
+    <ClCompile Include="franchi.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bardazzi.h" />
     <ClInclude Include="Fiordi.h" />
+    <ClInclude Include="franchi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
