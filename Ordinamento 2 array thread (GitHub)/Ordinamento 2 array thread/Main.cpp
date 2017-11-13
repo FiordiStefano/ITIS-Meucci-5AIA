@@ -18,6 +18,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"franchi.h"
 #include"Fossati.h"
 #include"Costanzo.h"
+#include"comparini.h"
 
 using namespace std;
 
@@ -45,6 +46,8 @@ void main()
 	int V2Franchi[100];
 	int iV_Fossati1[100], iV_Fossati2[100];
 	int iV_Costanzo1[100], iV_Costanzo2[100];
+	int iV_Compa1[100], iV_Compa2[100];
+
 
 	HANDLE T1_DL, T2_DL;	
 
@@ -70,6 +73,8 @@ void main()
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
 		iV_Costanzo2[i] = rand() % 1000 + 1;
+		iV_Compa1[i] = rand() % 1000 + 1;
+		iV_Compa2[i] = rand() % 1000 + 1;
 
 	}
 
@@ -105,6 +110,8 @@ void main()
 	HANDLE hFossati2 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati2, 0, &threadid);
 	HANDLE hCostanzo1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo1, 0, &threadid);
 	HANDLE hCostanzo2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo2, 0, &threadid);
+	HANDLE hCompa1 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa1, 0, &threadid);
+	HANDLE hCompa2 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa2, 0, &threadid);
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
 	WaitForSingleObject(H2dipirro, INFINITE);
@@ -125,6 +132,11 @@ void main()
 	WaitForSingleObject(hOrd2, INFINITE);
 	CloseHandle(hOrd1);
 	CloseHandle(hOrd2);
+
+	WaitForSingleObject(hCompa1, INFINITE);
+	WaitForSingleObject(hCompa2, INFINITE);
+	CloseHandle(hCompa1);
+	CloseHandle(hCompa2);
 	
 	
 	WaitForSingleObject(hBerlincioni1, INFINITE);
@@ -207,6 +219,10 @@ void main()
 	for (int i = 0; i < 100; i++)
 	{
 		cout << "iV_Costanzo1[" << i << "] = " << iV_Costanzo1[i] << "    | iV_Costanzo2[" << i << "] = " << iV_Costanzo2[i] << endl;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		cout << "iV_Compa1[" << i << "] = " << iV_Compa1[i] << "    | iV_Compa2[" << i << "] = " << iV_Compa2[i] << endl;
 	}
 	system("PAUSE");
 
