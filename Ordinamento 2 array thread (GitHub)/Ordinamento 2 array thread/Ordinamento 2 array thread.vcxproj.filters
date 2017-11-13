@@ -24,6 +24,9 @@
     <ClCompile Include="Bardazzi.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="franchi.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiordi.h">
@@ -31,6 +34,9 @@
     </ClInclude>
     <ClInclude Include="Bardazzi.h">
       <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="franchi.h">
+      <Filter>File di origine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
