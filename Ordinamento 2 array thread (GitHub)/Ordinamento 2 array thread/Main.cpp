@@ -17,6 +17,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"Pandolfini.h"
 #include"franchi.h"
 #include"Fossati.h"
+#include"Costanzo.h"
 
 using namespace std;
 
@@ -43,6 +44,7 @@ void main()
 	int V1Franchi[100];
 	int V2Franchi[100];
 	int iV_Fossati1[100], iV_Fossati2[100];
+	int iV_Costanzo1[100], iV_Costanzo2[100];
 
 	HANDLE T1_DL, T2_DL;	
 
@@ -66,6 +68,8 @@ void main()
 		V2Franchi[i] = rand() % 1000 + 1;
 		iV_Fossati1[i] = rand() % 1000 + 1;
 		iV_Fossati2[i] = rand() % 1000 + 1;
+		iV_Costanzo1[i] = rand() % 1000 + 1;
+		iV_Costanzo2[i] = rand() % 1000 + 1;
 
 	}
 
@@ -99,6 +103,8 @@ void main()
 
 	HANDLE hFossati1 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati1, 0, &threadid);
 	HANDLE hFossati2 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati2, 0, &threadid);
+	HANDLE hCostanzo1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo1, 0, &threadid);
+	HANDLE hCostanzo2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo2, 0, &threadid);
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
 	WaitForSingleObject(H2dipirro, INFINITE);
@@ -144,6 +150,10 @@ void main()
 	WaitForSignleObject(hFossati2, INFINITE);
 	CloseHandle(hFossati1);
 	CloseHandle(hFossati2);
+	WaitForSingleObject(hCostanzo1, INFINITE);
+	WaitForSignleObject(hCostanzo2, INFINITE);
+	CloseHandle(hCostanzo1);
+	CloseHandle(hCostanzo2);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -193,6 +203,10 @@ void main()
 	for (int i = 0; i < 100; i++)
 	{
 		cout << "iV_Fossati1[" << i << "] = " << iV_Fossati1[i] << "    | iV_Fossati2[" << i << "] = " << iV_Fossati2[i] << endl;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		cout << "iV_Costanzo1[" << i << "] = " << iV_Costanzo1[i] << "    | iV_Costanzo2[" << i << "] = " << iV_Costanzo2[i] << endl;
 	}
 	system("PAUSE");
 
