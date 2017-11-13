@@ -11,6 +11,8 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"Fiordi.h"
 #include"Bardazzi.h"
 #include"dipirro.h"
+#include"Berlincioni.h"
+
 using namespace std;
 
 /**
@@ -26,6 +28,8 @@ void main()
 	int V2Bardazzi[100];
 	int V1dipirro[100];
 	int V2dipirro[100];
+	int iBerlincioni1[100], iBerlincioni2[100];
+
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -35,6 +39,8 @@ void main()
 		V2Bardazzi[i] = rand() % 1000 + 1;
 		V1dipirro[i] = rand() % 1000 + 1;
 		V2dipirro[i] = rand() % 1000 + 1;
+		iBerlincioni1[i] = rand() % 1000 + 1;
+		iBerlincioni2[i] = rand() % 1000 + 1;
 	}
 
 	/// Per lanciare i thread uso _beginthreadex, e non _beginthread, perché quest'ultimo quando l'esecuzione del thread
@@ -47,6 +53,12 @@ void main()
 	
 	H1dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V1dipirro, 0,(void*)V1dipirro);
 	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,(void*)V2dipirro);
+	
+	
+	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
+	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
+
+
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
 	WaitForSingleObject(H2dipirro, INFINITE);
@@ -62,6 +74,13 @@ void main()
 	WaitForSingleObject(hOrd2, INFINITE);
 	CloseHandle(hOrd1);
 	CloseHandle(hOrd2);
+	
+	
+	WaitForSingleObject(hBerlincioni1, INFINITE);
+	WaitForSingleObject(hBerlincioni2, INFINITE);
+	CloseHandle(hBerlincioni1);
+	CloseHandle(hBerlincioni2);
+
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -80,6 +99,13 @@ void main()
 	
 		cout << "V1-DiPirro[" << i << "] = " << V1dipirro[i] << "    | V2-DiPirro[" << i << "] = " << V2dipirro[i] << endl;
 	}
+	
+	for (int i = 0; i < 100; i++)
+	{
+
+		cout << "iBerlincioni1[" << i << "] = " << iBerlincioni1[i] << "    | iBerlincioni2[" << i << "] = " << iBerlincioni2[i] << endl;
+	}
+
 
 	system("PAUSE");
 
