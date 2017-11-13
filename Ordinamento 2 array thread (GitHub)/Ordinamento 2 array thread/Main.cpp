@@ -1,5 +1,5 @@
 /**
-@author Fiordi Stefano - Di Luigi Marco
+@author Fiordi Stefano
 @date 21/09/2017
 Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica funzione
 */
@@ -18,6 +18,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 
 =======
 #include"Fossati.h"
+#include"dipirro.h"
 >>>>>>> 4cc6699e57cb010f8743a7d5556cee4a21c3fbff
 >>>>>>> c06b4ee2c22b5b6de9226f59a3057e3f93dee51f
 using namespace std;
@@ -43,6 +44,11 @@ void main()
 	int V2_DiLuigi[100];
 	HANDLE T1_DL, T2_DL;
 	
+	//Var Di Pirro
+	int V1dipirro[100];
+	int V2dipirro[100];
+	HANDLE H1dipirro, H2dipirro;
+	
 	
 =======
 	int V1Fossati[100];
@@ -63,6 +69,8 @@ void main()
 =======
 		V1Fossati[i] = rand() % 1000 + 1;
 		V2Fossati[i] = rand() % 1000 + 1;
+		V1dipirro[i] = rand() % 1000 + 1;
+		V2dipirro[i] = rand() % 1000 + 1;
 >>>>>>> 4cc6699e57cb010f8743a7d5556cee4a21c3fbff
 >>>>>>> c06b4ee2c22b5b6de9226f59a3057e3f93dee51f
 	}
@@ -109,7 +117,15 @@ void main()
 	WaitForSingleObject(H2Fossati, INFINITE);
 	CloseHandle(H1Fossati);
 	CloseHandle(H2Fossati);
+	
+	H1dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V1dipirro, 0,(void*)V1dipirro);
+	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,(void*)V2dipirro);
+	WaitForSingleObject(H1dipirro, INFINITE);
+	WaitForSingleObject(H2dipirro, INFINITE);
+	CloseHandle(H1dipirro);
+	CloseHandle(H2dipirro);
 
+	
 
 >>>>>>> 4cc6699e57cb010f8743a7d5556cee4a21c3fbff
 	WaitForSingleObject(hOrd1, INFINITE);
@@ -141,6 +157,11 @@ void main()
 	
 =======
 		cout << "V1Fossati[" << i << "] = " << V1Fossati[i] << "    | V2Fossati[" << i << "] = " << V2Fossati[i] << endl;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+	
+		cout << "V1-DiPirro[" << i << "] = " << V1dipirro[i] << "    | V2-DiPirro[" << i << "] = " << V2dipirro[i] << endl;
 	}
 >>>>>>> c06b4ee2c22b5b6de9226f59a3057e3f93dee51f
 	system("PAUSE");
