@@ -1,5 +1,5 @@
 /**
-@author Fiordi Stefano
+Fiordi Stefano
 File intestazione
 */
 

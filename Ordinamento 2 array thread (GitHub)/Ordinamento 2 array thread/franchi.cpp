@@ -19,5 +19,5 @@ unsigned  _stdcall ordina(void* val)
 		}
 	}
 	_endthread();
-	return 0;
+	//return 0;
 }

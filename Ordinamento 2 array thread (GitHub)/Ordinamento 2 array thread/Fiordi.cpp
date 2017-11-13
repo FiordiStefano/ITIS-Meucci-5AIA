@@ -1,5 +1,5 @@
 /**
-@author Fiordi Stefano
+Fiordi Stefano
 Funzione ordinamento vettori
 */
 
@@ -10,7 +10,7 @@ Funzione ordinamento vettori
 using namespace std;
 
 /**
-@fn unsigned __stdcall thOrdFiordi(void * data)
+@fn unsigned __stdcall thOrdina(void * data)
 @param data puntatore da passare alla funzione
 Funzione che ordina un array di 100 elementi interi in ordine crescente
 */
