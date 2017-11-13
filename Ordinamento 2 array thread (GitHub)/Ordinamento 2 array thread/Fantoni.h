@@ -1,0 +1,1 @@
+unsigned int _stdcall  Thread(void *data);
