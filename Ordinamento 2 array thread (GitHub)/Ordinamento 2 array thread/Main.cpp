@@ -13,6 +13,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"dipirro.h"
 #include"Berlincioni.h"
 #include"DiLuigi.h" 
+#include"Fiasconi.h"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ void main()
 	int V1dipirro[100];
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
+	int V1Fiasconi[100], V2Fiasconi[100];
 
 	//Var Di Luigi
 	int V1_DiLuigi[100];
@@ -46,8 +48,11 @@ void main()
 		V2dipirro[i] = rand() % 1000 + 1;
 		iBerlincioni1[i] = rand() % 1000 + 1;
 		iBerlincioni2[i] = rand() % 1000 + 1;
-		V1_DiLuigi[i] = rand() % 1000 + 1:
+		V1_DiLuigi[i] = rand() % 1000 + 1;
 		V2_DiLuigi[i] = rand() % 1000 + 1;
+		V1Fiasconi[i] = rand() % 1000 + 1;
+		V2Fiasconi[i] = rand() % 1000 + 1;
+
 
 	}
 
@@ -66,9 +71,13 @@ void main()
 	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
 
+	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
+	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
+
+
 	//Di Luigi - Start
-	T1_DL = (HANDLE)_beginthread(Thread_DiLuigi, 0, (void*)V1_DiLuigi);
-	T2_DL = (HANDLE)_beginthread(Thread_DiLuigi, 0, (void*)V2_DiLuigi);	
+	T1_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V1_DiLuigi);
+	T2_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V2_DiLuigi);	
 
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
@@ -96,6 +105,9 @@ void main()
 	WaitForSingleObject(hBerlincioni2, INFINITE);
 	CloseHandle(hBerlincioni1);
 	CloseHandle(hBerlincioni2);
+
+	WaitForSingleObject(h1Fiasconi, INFINITE);
+	WaitForSingleObject(h2Fiasconi, INFINITE);
 
 
 	for (int i = 0; i < 100; i++)
@@ -126,6 +138,11 @@ void main()
 	for (int i = 0; i < 100; i++)
 	{	
 		cout << "V1_DiLuigi [" << i << "] = " << V1_DiLuigi[i] << "    | V2_DiLuigi [" << i << "] = " << V2_DiLuigi[i] << endl;
+	}
+
+	for (int i = 0; i < 100; i++)
+	{
+		cout << "V1Fiasconi [" << i << "] = " << V1Fiasconi[i] << "    | V2Fiasconi[" << i << "] = " << V2Fiasconi[i] << endl;
 	}
 
 	system("PAUSE");
