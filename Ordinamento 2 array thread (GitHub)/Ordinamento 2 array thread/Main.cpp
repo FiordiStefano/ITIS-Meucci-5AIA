@@ -41,7 +41,7 @@ void main()
 	int V1dipirro[100];
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
-	int V1Fiasconi[100], V2Fiasconi[100];
+	int V1Fiasconi[100], V2Fiasconi[100]; /Inizializzazione vettori Loris
 	int V1Pandolfini[100];
 	int V2Pandolfini[100];
 	//Var Di Luigi
@@ -110,8 +110,8 @@ void main()
 	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
 
-	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
-	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
+	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi); //creazione primo thread
+	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi); //creazione secondo thread
 
 	HANDLE Pandolfinith1 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V1Pandolfini, 0, &threadid);
 	HANDLE Pandolfinith2 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V2Pandolfini, 0, &threadid);
@@ -240,7 +240,7 @@ void main()
 	{	
 		cout << "V1_DiLuigi [" << i << "] = " << V1_DiLuigi[i] << "    | V2_DiLuigi [" << i << "] = " << V2_DiLuigi[i] << endl;
 	}
-
+    //Visualizzazione Fiasconi
 	for (int i = 0; i < 100; i++)
 	{
 		cout << "V1Fiasconi [" << i << "] = " << V1Fiasconi[i] << "    | V2Fiasconi[" << i << "] = " << V2Fiasconi[i] << endl;
