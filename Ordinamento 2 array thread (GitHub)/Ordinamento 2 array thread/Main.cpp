@@ -12,6 +12,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"Bardazzi.h"
 #include"dipirro.h"
 #include"Berlincioni.h"
+#include"DiLuigi.h" 
 
 using namespace std;
 
@@ -30,6 +31,10 @@ void main()
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
 
+	//Var Di Luigi
+	int V1_DiLuigi[100];
+	int V2_DiLuigi[100];
+	HANDLE T1_DL, T2_DL;	
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -41,6 +46,9 @@ void main()
 		V2dipirro[i] = rand() % 1000 + 1;
 		iBerlincioni1[i] = rand() % 1000 + 1;
 		iBerlincioni2[i] = rand() % 1000 + 1;
+		V1_DiLuigi[i] = rand() % 1000 + 1:
+		V2_DiLuigi[i] = rand() % 1000 + 1;
+
 	}
 
 	/// Per lanciare i thread uso _beginthreadex, e non _beginthread, perché quest'ultimo quando l'esecuzione del thread
@@ -58,6 +66,9 @@ void main()
 	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
 
+	//Di Luigi - Start
+	T1_DL = (HANDLE)_beginthread(Thread_DiLuigi, 0, (void*)V1_DiLuigi);
+	T2_DL = (HANDLE)_beginthread(Thread_DiLuigi, 0, (void*)V2_DiLuigi);	
 
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
@@ -65,7 +76,12 @@ void main()
 	CloseHandle(H1dipirro);
 	CloseHandle(H2dipirro);
 
-
+	//Di Luigi - End
+	WaitForSingleObject(T1_DL, INFINITE);
+	WaitForSingleObject(T2_DL, INFINITE);
+	CloseHandle(T1_DL);
+	CloseHandle(T2_DL);
+	
 	WaitForSingleObject(H1Bardazzi, INFINITE);
 	WaitForSingleObject(H2Bardazzi, INFINITE);
 
@@ -105,7 +121,12 @@ void main()
 
 		cout << "iBerlincioni1[" << i << "] = " << iBerlincioni1[i] << "    | iBerlincioni2[" << i << "] = " << iBerlincioni2[i] << endl;
 	}
-
+	
+	//Di Luigi - Vid
+	for (int i = 0; i < 100; i++)
+	{	
+		cout << "V1_DiLuigi [" << i << "] = " << V1_DiLuigi[i] << "    | V2_DiLuigi [" << i << "] = " << V2_DiLuigi[i] << endl;
+	}
 
 	system("PAUSE");
 
