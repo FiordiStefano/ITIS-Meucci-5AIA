@@ -58,6 +58,9 @@ void main()
 	int	V2Fodde[100];
 	int	V1Fodde[100];
 	
+	int V1Pandolfini[100]
+		int V2Pandolfini[100]
+
 	
 =======
 	int V1Fossati[100];
@@ -81,6 +84,8 @@ void main()
 		V2Fossati[i] = rand() % 1000 + 1;
 		V1dipirro[i] = rand() % 1000 + 1;
 		V2dipirro[i] = rand() % 1000 + 1;
+		V1Pandolfini[i] = rand() % 1000 + 1;
+		V2Pandolfini[i] = rand() % 1000 + 1;
 >>>>>>> 4cc6699e57cb010f8743a7d5556cee4a21c3fbff
 >>>>>>> c06b4ee2c22b5b6de9226f59a3057e3f93dee51f
 
@@ -148,6 +153,13 @@ void main()
 	WaitForSingleObject(H2dipirro, INFINITE);
 	CloseHandle(H1dipirro);
 	CloseHandle(H2dipirro);
+	HANDLE Pandolfinith1 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V1Panolfini, 0, &threadid);
+	HANDLE Pandolfinith2 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V2Pandolfini, 0, &threadid);
+	WaitForSingleObject(Pandolfinith1, INFINITE);
+	WaitForSingleObject(Pandolfinith2, INFINITE);
+	CloseHandle((Pandolfinith1);
+	CloseHandle((Pandolfinith2);
+
 
 <<<<<<< HEAD
 	WaitForSingleObject(H1Fantoni, INFINITE);
@@ -210,6 +222,11 @@ for (int i = 0; i < 100; i++)
 	cout << "V1Fodde[" << i << "] = " << V1Fodde[i] << "    | V2Fodde[" << i << "] = " << V2Fodde[i] << endl;
 }
 =======
+for (int i = 0; i < 100; i++)
+{
+
+	cout << "V1Pandolfini[" << i << "] = " << V1Pandolfini[i] << "    | V2Pandolfini[" << i << "] = " << V2Pandolfini[i] << endl;
+}
 	for (int i = 0; i < 100; i++)
 	{
 	
