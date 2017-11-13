@@ -16,6 +16,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"Fiasconi.h"
 #include"Pandolfini.h"
 #include"franchi.h"
+#include"Fossati.h"
 
 using namespace std;
 
@@ -41,6 +42,8 @@ void main()
 	int V2_DiLuigi[100];
 	int V1Franchi[100];
 	int V2Franchi[100];
+	int iV_Fossati1[100], iV_Fossati2[100];
+
 	HANDLE T1_DL, T2_DL;	
 
 	for (int i = 0; i < 100; i++)
@@ -61,6 +64,8 @@ void main()
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
 		V2Franchi[i] = rand() % 1000 + 1;
+		iV_Fossati1[i] = rand() % 1000 + 1;
+		iV_Fossati2[i] = rand() % 1000 + 1;
 
 	}
 
@@ -91,6 +96,9 @@ void main()
 	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid);
 	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid);
 
+
+	HANDLE hFossati1 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati1, 0, &threadid);
+	HANDLE hFossati2 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati2, 0, &threadid);
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
 	WaitForSingleObject(H2dipirro, INFINITE);
@@ -130,6 +138,12 @@ void main()
 	WaitForSingleObject(h2Franchi, INFINITE);
 	CloseHandle(h1Franchi);
 	CloseHandle(h2Franchi);
+
+
+	WaitForSingleObject(hFossati1, INFINITE);
+	WaitForSignleObject(hFossati2, INFINITE);
+	CloseHandle(hFossati1);
+	CloseHandle(hFossati2);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -174,6 +188,11 @@ void main()
 	{
 
 		cout << "V1Franchi[" << i << "] = " << V1Franchi[i] << "    | V2Franchi[" << i << "] = " << V2Franchi[i] << endl;
+	}
+
+	for (int i = 0; i < 100; i++)
+	{
+		cout << "iV_Fossati1[" << i << "] = " << iV_Fossati1[i] << "    | iV_Fossati2[" << i << "] = " << iV_Fossati2[i] << endl;
 	}
 	system("PAUSE");
 
