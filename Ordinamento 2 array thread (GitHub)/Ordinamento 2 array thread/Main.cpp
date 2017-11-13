@@ -43,7 +43,7 @@ void main()
 	int V1dipirro[100];
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
-	int V1Fiasconi[100], V2Fiasconi[100]; /Inizializzazione vettori Loris
+	int V1Fiasconi[100], V2Fiasconi[100]; //Inizializzazione vettori Loris
 	int V1Pandolfini[100];
 	int V2Pandolfini[100];
 	//Var Di Luigi
