@@ -33,6 +33,9 @@
     <ClCompile Include="Fantoni.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="Fodde.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fiordi.h">
@@ -48,6 +51,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="Fantoni.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="Fodde.h">
       <Filter>File di origine</Filter>
     </ClInclude>
   </ItemGroup>

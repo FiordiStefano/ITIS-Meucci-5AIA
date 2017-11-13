@@ -20,6 +20,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"Costanzo.h"
 #include"comparini.h"
 #include"Fantoni.h"
+#include "Fodde.h"
 
 using namespace std;
 
@@ -50,6 +51,8 @@ void main()
 	int iV_Compa1[100], iV_Compa2[100];
 	int V1Fantoni[100];
 	int V2Fantoni[100];
+	int V1Fodde[100];
+	int V2Fodde[100];
 
 
 	HANDLE T1_DL, T2_DL;	
@@ -80,6 +83,8 @@ void main()
 		iV_Compa2[i] = rand() % 1000 + 1;
 		V1Fantoni[i] = rand() % 1000 + 1;
 		V2Fantoni[i] = rand() % 1000 + 1;
+		V1Fodde[i] = rand() % 1000 + 1;
+		V2Fodde[i] = rand() % 1000 + 1;
 	}
 
 	/// Per lanciare i thread uso _beginthreadex, e non _beginthread, perché quest'ultimo quando l'esecuzione del thread
@@ -119,6 +124,9 @@ void main()
 	
 	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid);
 	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V2Fantoni, 0, &threadid);
+
+	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid);
+	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid);
 
 
 	WaitForSingleObject(H1dipirro, INFINITE);
@@ -179,6 +187,11 @@ void main()
 	WaitForSingleObject(H2Fantoni, INFINITE);
 	CloseHandle(H1Fantoni);
 	CloseHandle(H2Fantoni);
+
+	WaitForSingleObject(H1Fodde, INFINITE);
+	WaitForSingleObject(H2Fodde, INFINITE);
+	CloseHandle(H1Fodde);
+	CloseHandle(H2Fodde);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -242,6 +255,12 @@ void main()
 	{
 
 		cout << "V1Fantoni[" << i << "] = " << V1Fantoni[i] << "    | V2Fantoni[" << i << "] = " << V2Fantoni[i] << endl;
+	}
+
+	for (int i = 0; i < 100; i++)
+	{
+
+		cout << "V1Fodde[" << i << "] = " << V1Fodde[i] << "    | V2Fodde[" << i << "] = " << V2Fodde[i] << endl;
 	}
 
 	system("PAUSE");

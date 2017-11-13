@@ -150,6 +150,7 @@
     <ClCompile Include="Bardazzi.cpp" />
     <ClCompile Include="Fantoni.cpp" />
     <ClCompile Include="Fiordi.cpp" />
+    <ClCompile Include="Fodde.cpp" />
     <ClCompile Include="franchi.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="Bardazzi.h" />
     <ClInclude Include="Fantoni.h" />
     <ClInclude Include="Fiordi.h" />
+    <ClInclude Include="Fodde.h" />
     <ClInclude Include="franchi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
