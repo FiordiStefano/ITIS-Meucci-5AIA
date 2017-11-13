@@ -36,6 +36,7 @@ void main()
 	/// viene terminata velocemente, la funzione si comporta in modo anomalo, e non è più possibile chiudere l'handle del relativo thread
 	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thred
 	HANDLE hOrd2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iW, 0, &threadid); /// Lancio del secondo thread
+
 	H1Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V1Bardazzi);
 	H2Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V2Bardazzi);
 
