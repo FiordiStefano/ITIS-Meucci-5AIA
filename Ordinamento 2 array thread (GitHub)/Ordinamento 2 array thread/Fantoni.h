@@ -1,1 +1,1 @@
-unsigned int _stdcall  Thread(void *data);
+unsigned int _stdcall  FantoniF(void *data);

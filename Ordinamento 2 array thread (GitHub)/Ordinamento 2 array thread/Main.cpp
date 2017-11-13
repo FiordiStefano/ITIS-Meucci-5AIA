@@ -17,6 +17,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"DiLuigi.h" 
 <<<<<<< HEAD
 #include "Fantoni.h"
+#include "Fodde.h"
 
 =======
 #include"Fossati.h"
@@ -50,11 +51,18 @@ void main()
 	int V1dipirro[100];
 	int V2dipirro[100];
 	HANDLE H1dipirro, H2dipirro;
+
+	int	V1Fantoni[100];
+	int	V2Fantoni[100];
+
+	int	V2Fodde[100];
+	int	V1Fodde[100];
 	
 	
 =======
 	int V1Fossati[100];
 	int V2Fossati[100];
+
 >>>>>>> 4cc6699e57cb010f8743a7d5556cee4a21c3fbff
 >>>>>>> c06b4ee2c22b5b6de9226f59a3057e3f93dee51f
 	for (int i = 0; i < 100; i++)
@@ -78,6 +86,10 @@ void main()
 
 		V1Fantoni[i] = rand() % 1000 + 1;
 		V2Fantoni[i] = rand() % 1000 + 1;
+
+		V1Fodde[i] = rand() % 1000 + 1;
+		V2Fodde[i] = rand() % 1000 + 1;
+
 
 	}
 
@@ -115,8 +127,11 @@ void main()
 	HANDLE H1Fossati = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, V1Fossati, 0,(void*)V1Fossati); 
 	HANDLE H2Fossati = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, V2Fossati, 0, (void*)V2Fossati);
 
-	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, V1Fantoni, 0, (void*)V1Fantoni);
-	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, V2Fantoni, 0, (void*)V2Fantoni);
+	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, &FantoniF, V1Fantoni, 0, (void*)V1Fantoni);
+	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, &FantoniF, V2Fantoni, 0, (void*)V2Fantoni);
+
+	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, &FoddeF, V1Fodde, 0, (void*)V1Fodde);
+	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, &FoddeF, V2Fodde, 0, (void*)V2Fodde);
 
 	WaitForSingleObject(H1Bardazzi, INFINITE);
 	WaitForSingleObject(H2Bardazzi, INFINITE);
@@ -139,6 +154,11 @@ void main()
 	WaitForSingleObject(H2Fantoni, INFINITE);
 	CloseHandle(H1Fantoni);
 	CloseHandle(H2Fantoni);
+
+	WaitForSingleObject(H1Fodde, INFINITE);
+	WaitForSingleObject(H2Fodde, INFINITE);
+	CloseHandle(H1Fodde);
+	CloseHandle(H2Fodde);
 
 =======
 	
@@ -177,10 +197,18 @@ void main()
 	}
 <<<<<<< HEAD
 
-	cout << "Vettori Ordinati FAntoni\n";
-	for (int i = 0; i < 100; i++)
-	{
-		cout << "iV[" << i << "] = " << V2Fantoni[i] << "    | iW[" << i << "] = " << V2Fantoni[i] << endl;
+	cout << "Vettori Ordinati Fantoni\n";
+for (int i = 0; i < 100; i++)
+{
+	cout << "V1Fantoni[" << i << "] = " << V2Fantoni[i] << "    | V2Fantoni[" << i << "] = " << V2Fantoni[i] << endl;
+}
+
+cout << "Vettori Ordinati Fodde\n";
+
+for (int i = 0; i < 100; i++)
+{
+	cout << "V1Fodde[" << i << "] = " << V1Fodde[i] << "    | V2Fodde[" << i << "] = " << V2Fodde[i] << endl;
+}
 =======
 	for (int i = 0; i < 100; i++)
 	{

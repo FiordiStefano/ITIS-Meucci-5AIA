@@ -1,4 +1,4 @@
-unsigned int _stdcall  FantoniF(void *data)
+unsigned _stdcall FoddeF(void *data)
 {
 	int *V = (int*)data;
 	bool cambio;
@@ -8,7 +8,7 @@ unsigned int _stdcall  FantoniF(void *data)
 		cambio = false;
 
 
-		for (int i = 0; i < 99; i++)
+		for (int i = 0; i < 99 - 1; i++)
 		{
 			if (V[i + 1] < V[i])
 			{
@@ -21,5 +21,5 @@ unsigned int _stdcall  FantoniF(void *data)
 		}
 
 	} while (cambio == true);
-	return 0;
+
 }
