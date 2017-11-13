@@ -14,6 +14,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"Berlincioni.h"
 #include"DiLuigi.h" 
 #include"Fiasconi.h"
+#include"Pandolfini.h"
 
 using namespace std;
 
@@ -32,7 +33,8 @@ void main()
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
 	int V1Fiasconi[100], V2Fiasconi[100];
-
+	int V1Pandolfini[100]
+	int V2Pandolfini[100]
 	//Var Di Luigi
 	int V1_DiLuigi[100];
 	int V2_DiLuigi[100];
@@ -52,7 +54,8 @@ void main()
 		V2_DiLuigi[i] = rand() % 1000 + 1;
 		V1Fiasconi[i] = rand() % 1000 + 1;
 		V2Fiasconi[i] = rand() % 1000 + 1;
-
+		V1Pandolfini[i] = rand() % 1000 + 1;
+		V2Pandolfini[i] = rand() % 1000 + 1;
 
 	}
 
@@ -74,7 +77,8 @@ void main()
 	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
 	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
 
-
+	HANDLE Pandolfinith1 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V1Panolfini, 0, &threadid);
+	HANDLE Pandolfinith2 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V2Pandolfini, 0, &threadid);
 	//Di Luigi - Start
 	T1_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V1_DiLuigi);
 	T2_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V2_DiLuigi);	
@@ -109,6 +113,10 @@ void main()
 	WaitForSingleObject(h1Fiasconi, INFINITE);
 	WaitForSingleObject(h2Fiasconi, INFINITE);
 
+	WaitForSingleObject(Pandolfinith1, INFINITE);
+	WaitForSingleObject(Pandolfinith2, INFINITE);
+	CloseHandle((Pandolfinith1);
+	CloseHandle((Pandolfinith2);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -144,7 +152,11 @@ void main()
 	{
 		cout << "V1Fiasconi [" << i << "] = " << V1Fiasconi[i] << "    | V2Fiasconi[" << i << "] = " << V2Fiasconi[i] << endl;
 	}
+	for (int i = 0; i < 100; i++)
+	{
 
+		cout << "V1Pandolfini[" << i << "] = " << V1Pandolfini[i] << "    | V2Pandolfini[" << i << "] = " << V2Pandolfini[i] << endl;
+	}
 	system("PAUSE");
 
 }
