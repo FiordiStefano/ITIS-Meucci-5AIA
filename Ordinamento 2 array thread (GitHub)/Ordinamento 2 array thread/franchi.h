@@ -1,0 +1,1 @@
+unsigned  _stdcall ordinafranchi(void* val);

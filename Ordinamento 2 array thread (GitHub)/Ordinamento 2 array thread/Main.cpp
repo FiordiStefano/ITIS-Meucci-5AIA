@@ -15,6 +15,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include"DiLuigi.h" 
 #include"Fiasconi.h"
 #include"Pandolfini.h"
+#include"franchi.h"
 
 using namespace std;
 
@@ -33,11 +34,13 @@ void main()
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
 	int V1Fiasconi[100], V2Fiasconi[100];
-	int V1Pandolfini[100]
-	int V2Pandolfini[100]
+	int V1Pandolfini[100];
+	int V2Pandolfini[100];
 	//Var Di Luigi
 	int V1_DiLuigi[100];
 	int V2_DiLuigi[100];
+	int V1Franchi[100];
+	int V2Franchi[100];
 	HANDLE T1_DL, T2_DL;	
 
 	for (int i = 0; i < 100; i++)
@@ -56,6 +59,8 @@ void main()
 		V2Fiasconi[i] = rand() % 1000 + 1;
 		V1Pandolfini[i] = rand() % 1000 + 1;
 		V2Pandolfini[i] = rand() % 1000 + 1;
+		V1Franchi[i] = rand() % 1000 + 1;
+		V2Franchi[i] = rand() % 1000 + 1;
 
 	}
 
@@ -82,6 +87,9 @@ void main()
 	//Di Luigi - Start
 	T1_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V1_DiLuigi);
 	T2_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V2_DiLuigi);	
+
+	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid);
+	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid);
 
 	
 	WaitForSingleObject(H1dipirro, INFINITE);
@@ -117,6 +125,11 @@ void main()
 	WaitForSingleObject(Pandolfinith2, INFINITE);
 	CloseHandle((Pandolfinith1);
 	CloseHandle((Pandolfinith2);
+
+	WaitForSingleObject(h1Franchi, INFINITE);
+	WaitForSingleObject(h2Franchi, INFINITE);
+	CloseHandle(h1Franchi);
+	CloseHandle(h2Franchi);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -156,6 +169,11 @@ void main()
 	{
 
 		cout << "V1Pandolfini[" << i << "] = " << V1Pandolfini[i] << "    | V2Pandolfini[" << i << "] = " << V2Pandolfini[i] << endl;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+
+		cout << "V1Franchi[" << i << "] = " << V1Franchi[i] << "    | V2Franchi[" << i << "] = " << V2Franchi[i] << endl;
 	}
 	system("PAUSE");
 
