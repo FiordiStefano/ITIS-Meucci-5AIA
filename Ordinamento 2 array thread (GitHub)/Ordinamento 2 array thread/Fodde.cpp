@@ -1,19 +1,10 @@
-/**
-Fiordi Stefano
-Funzione ordinamento vettori
-*/
-
 #include<iostream>
 #include<Windows.h>
 #include<process.h>
-#include"Fiordi.h"
+
 using namespace std;
 
-/**
-@fn unsigned __stdcall thOrdina(void * data)
-@param data puntatore da passare alla funzione
-Funzione che ordina un array di 100 elementi interi in ordine crescente
-*/
+
 unsigned __stdcall thOrdFiordi(void * data)
 {
 	int * iVett = (int *)data;
@@ -30,6 +21,6 @@ unsigned __stdcall thOrdFiordi(void * data)
 		}
 	}
 
-	_endthreadex(0); /// termino l'esecuzione del thread
+	_endthreadex(0);
 	return(0);
 }
