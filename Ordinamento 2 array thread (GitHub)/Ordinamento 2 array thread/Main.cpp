@@ -9,6 +9,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 #include<process.h>
 #include<time.h>
 #include"Fiordi.h"
+#include"comparini.h"
 using namespace std;
 
 /**
@@ -30,11 +31,15 @@ void main()
 	/// viene terminata velocemente, la funzione si comporta in modo anomalo, e non è più possibile chiudere l'handle del relativo thread
 	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thred
 	HANDLE hOrd2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iW, 0, &threadid); /// Lancio del secondo thread
+	HANDLE h1comparini = (HANDLE)_beginthreadex(NULL, 0, ordina , iV, 0, &threadid); /// Lancio del primo thred
+	HANDLE h2comparini = (HANDLE)_beginthreadex(NULL, 0, ordina , iW, 0, &threadid); /// Lancio del secondo thread
 
 	WaitForSingleObject(hOrd1, INFINITE);
 	WaitForSingleObject(hOrd2, INFINITE);
-	CloseHandle(hOrd1);
-	CloseHandle(hOrd2);
+	WaitForSingleObject(h1comparini, INFINITE);
+	WaitForSingleObject(h2comparini, INFINITE);
+	CloseHandle(h1comparini);
+	CloseHandle(h2comparini);
 
 	for (int i = 0; i < 100; i++)
 	{

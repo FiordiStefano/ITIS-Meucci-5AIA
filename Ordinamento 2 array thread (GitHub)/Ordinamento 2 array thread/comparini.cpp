@@ -1,0 +1,20 @@
+#include<process.h>
+#include<stdlib.h>
+unsigned int _stdcall ordina(void* val)
+{
+	int s;
+	int *K = (int*)val;
+	for (int y = 0; y<100; y++) {
+		for (int i = 0; i < 100 - 1; i++)
+		{
+			if (K[i] > K[i + 1])
+			{
+				s = K[i];
+				K[i] = K[i + 1];
+				K[i + 1] = s;
+			}
+		}
+	}
+	_endthread();
+	return 0;
+}
