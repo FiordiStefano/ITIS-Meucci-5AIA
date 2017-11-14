@@ -2,6 +2,7 @@
 @author Fiordi Stefano
 @date 21/09/2017
 Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica funzione
+Questo programma fa schifo
 */
 
 #include<iostream>
