@@ -47,7 +47,13 @@ void main()
 	int V1Fiasconi[100], V2Fiasconi[100];
 
 	int iBerlincioni1[100], iBerlincioni2[100];
+
+	int V1Fiasconi[100], V2Fiasconi[100];
+	// Vettori Pandolfini
+
 	int V1Fiasconi[100], V2Fiasconi[100]; //Inizializzazione vettori Loris
+
+
 
 	int V1Pandolfini[100];
 	int V2Pandolfini[100];
@@ -93,6 +99,7 @@ void main()
 
 		V1Fiasconi[i] = rand() % 1000 + 1;
 		V2Fiasconi[i] = rand() % 1000 + 1;
+		// Inserimento
 		V1Pandolfini[i] = rand() % 1000 + 1;
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
@@ -130,6 +137,11 @@ void main()
 	
 	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);///Lancio dei due thread
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
+
+
+	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
+	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
+	// Lancio i thread
 
 	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi); //creazione primo thread
 	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi); //creazione secondo thread
@@ -201,9 +213,10 @@ void main()
 
 	WaitForSingleObject(h1Fiasconi, INFINITE); 
 	WaitForSingleObject(h2Fiasconi, INFINITE);
-
+	// Attesa thread Pandolfini
 	WaitForSingleObject(Pandolfinith1, INFINITE);
 	WaitForSingleObject(Pandolfinith2, INFINITE);
+	 // Chiusura thread Pandolfini
 	CloseHandle(Pandolfinith1);
 	CloseHandle(Pandolfinith2);
 
@@ -275,6 +288,7 @@ void main()
 	{
 		cout << "V1Fiasconi [" << i << "] = " << V1Fiasconi[i] << "    | V2Fiasconi[" << i << "] = " << V2Fiasconi[i] << endl;
 	}
+	// Output vettore Pandolfini
 	for (int i = 0; i < 100; i++)
 	{
 
