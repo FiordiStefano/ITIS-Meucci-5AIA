@@ -75,7 +75,7 @@ void main()
 		V2dipirro[i] = rand() % 1000 + 1;
 		iBerlincioni1[i] = rand() % 1000 + 1;
 		iBerlincioni2[i] = rand() % 1000 + 1;
-		V1_DiLuigi[i] = rand() % 1000 + 1;
+		V1_DiLuigi[i] = rand() % 1000 + 1; //
 		V2_DiLuigi[i] = rand() % 1000 + 1;
 		V1Fiasconi[i] = rand() % 1000 + 1;
 		V2Fiasconi[i] = rand() % 1000 + 1;
@@ -120,8 +120,8 @@ void main()
 	HANDLE Pandolfinith1 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V1Pandolfini, 0, &threadid);
 	HANDLE Pandolfinith2 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V2Pandolfini, 0, &threadid);
 	//Di Luigi - Start
-	T1_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V1_DiLuigi, 0, &threadid);
-	T2_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V2_DiLuigi, 0, &threadid);	
+	T1_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V1_DiLuigi, 0, &threadid); //Dichiarazione per l' inizzazione del Thread per l' ordinamento del Vettore V1_DiLuigi
+	T2_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V2_DiLuigi, 0, &threadid); //Dichiarazione per l' inizzazione del Thread per l' ordinamento del Vettore V2_DiLuigi
 
 	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid);
 	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid);
@@ -153,8 +153,8 @@ void main()
 	//Di Luigi - End
 	WaitForSingleObject(T1_DL, INFINITE);
 	WaitForSingleObject(T2_DL, INFINITE);
-	CloseHandle(T1_DL);
-	CloseHandle(T2_DL);
+	CloseHandle(T1_DL); //Liberazione del Thread1
+	CloseHandle(T2_DL); //Liberazione del Thread2
 	
 	WaitForSingleObject(H1Bardazzi, INFINITE);
 	WaitForSingleObject(H2Bardazzi, INFINITE);
