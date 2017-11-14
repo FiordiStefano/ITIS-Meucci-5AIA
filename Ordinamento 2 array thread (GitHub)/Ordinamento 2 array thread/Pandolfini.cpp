@@ -4,7 +4,7 @@
 #include"Pandolfini.h"
 using namespace std;
 
-
+// Funzione Ordinamento Pandolfini
 unsigned int __stdcall ordinamento(void* x)
 
 {
@@ -15,7 +15,7 @@ unsigned int __stdcall ordinamento(void* x)
 	for (int i = 0; i < 100 - 1; i++)
 
 	{
-		for (int j = i + 1; i < 100; j++)
+		for (int j = i + 1; j < 100; j++)
 
 		{
 

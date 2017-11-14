@@ -1,5 +1,5 @@
 /**
-@author Fiordi Stefano
+@author Fiordi Stefano + Berlincioni
 @date 21/09/2017
 Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica funzione
 
@@ -42,8 +42,19 @@ void main()
 	//vettori Di Pirro
 	int V1dipirro[100];
 	int V2dipirro[100];
+
+	int iBerlincioni1[100], iBerlincioni2[100]; ///dichiarazone dei vettori
+	int V1Fiasconi[100], V2Fiasconi[100];
+
 	int iBerlincioni1[100], iBerlincioni2[100];
+
+	int V1Fiasconi[100], V2Fiasconi[100];
+	// Vettori Pandolfini
+
 	int V1Fiasconi[100], V2Fiasconi[100]; //Inizializzazione vettori Loris
+
+
+
 	int V1Pandolfini[100];
 	int V2Pandolfini[100];
 	//Var Di Luigi
@@ -75,12 +86,20 @@ void main()
 		//inizializzazione vettori Di Pirro con valori randomici
 		V1dipirro[i] = rand() % 1000 + 1;
 		V2dipirro[i] = rand() % 1000 + 1;
+
+		iBerlincioni1[i] = rand() % 1000 + 1; ///valori casuali
+		iBerlincioni2[i] = rand() % 1000 + 1; ///valori casuali
+		V1_DiLuigi[i] = rand() % 1000 + 1;
+		V2_DiLuigi[i] = rand() % 1000 + 1;
+
 		iBerlincioni1[i] = rand() % 1000 + 1;
 		iBerlincioni2[i] = rand() % 1000 + 1;
 		V1_DiLuigi[i] = rand() % 1000 + 1; //Compilamento del Vettore V1 con valori random da 1 a 1000
 		V2_DiLuigi[i] = rand() % 1000 + 1; //Compilamento del Vettore V2 con valori random da 1 a 1000
+
 		V1Fiasconi[i] = rand() % 1000 + 1;
 		V2Fiasconi[i] = rand() % 1000 + 1;
+		// Inserimento
 		V1Pandolfini[i] = rand() % 1000 + 1;
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
@@ -116,8 +135,13 @@ void main()
 	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,&threadid);
 	
 	
-	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
+	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);///Lancio dei due thread
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
+
+
+	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
+	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
+	// Lancio i thread
 
 	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi); //creazione primo thread
 	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi); //creazione secondo thread
@@ -182,16 +206,17 @@ void main()
 	CloseHandle(hCompa2);
 	
 	
-	WaitForSingleObject(hBerlincioni1, INFINITE);
+	WaitForSingleObject(hBerlincioni1, INFINITE);  ///Attendere la fine dei thread
 	WaitForSingleObject(hBerlincioni2, INFINITE);
-	CloseHandle(hBerlincioni1);
+	CloseHandle(hBerlincioni1); ///chiusura dei thread
 	CloseHandle(hBerlincioni2);
 
-	WaitForSingleObject(h1Fiasconi, INFINITE);
+	WaitForSingleObject(h1Fiasconi, INFINITE); 
 	WaitForSingleObject(h2Fiasconi, INFINITE);
-
+	// Attesa thread Pandolfini
 	WaitForSingleObject(Pandolfinith1, INFINITE);
 	WaitForSingleObject(Pandolfinith2, INFINITE);
+	 // Chiusura thread Pandolfini
 	CloseHandle(Pandolfinith1);
 	CloseHandle(Pandolfinith2);
 
@@ -246,7 +271,7 @@ void main()
 	
 		cout << "V1-DiPirro[" << i << "] = " << V1dipirro[i] << "    | V2-DiPirro[" << i << "] = " << V2dipirro[i] << endl;
 	}
-	
+	///visualizzione finale del vettore
 	for (int i = 0; i < 100; i++)
 	{
 
@@ -263,6 +288,7 @@ void main()
 	{
 		cout << "V1Fiasconi [" << i << "] = " << V1Fiasconi[i] << "    | V2Fiasconi[" << i << "] = " << V2Fiasconi[i] << endl;
 	}
+	// Output vettore Pandolfini
 	for (int i = 0; i < 100; i++)
 	{
 
