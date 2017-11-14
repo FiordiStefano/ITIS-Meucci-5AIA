@@ -33,7 +33,7 @@ Funzione main del programma nella quale vengono lanciati i thread
 void main()
 {
 	srand(time(NULL));
-	int iV[100], iW[100];
+	int iV[100], iW[100]; /// Dichiarazione vettori Fiordi
 	unsigned threadid;
 	HANDLE H1Bardazzi, H2Bardazzi, H1dipirro, H2dipirro;
 	int V1Bardazzi[100];
@@ -64,7 +64,7 @@ void main()
 
 	for (int i = 0; i < 100; i++)
 	{
-		iV[i] = rand() % 1000 + 1;
+		iV[i] = rand() % 1000 + 1; /// Riempimento vettori Fiordi
 		iW[i] = rand() % 1000 + 1;
 		V1Bardazzi[i] = rand() % 1000 + 1;
 		V2Bardazzi[i] = rand() % 1000 + 1;
@@ -155,9 +155,9 @@ void main()
 	WaitForSingleObject(H2Bardazzi, INFINITE);
 
 
-	WaitForSingleObject(hOrd1, INFINITE);
+	WaitForSingleObject(hOrd1, INFINITE); /// Attesa della terminazione dei thread
 	WaitForSingleObject(hOrd2, INFINITE);
-	CloseHandle(hOrd1);
+	CloseHandle(hOrd1); /// Chiusura handle dei thread
 	CloseHandle(hOrd2);
 
 	WaitForSingleObject(hCompa1, INFINITE);
@@ -211,6 +211,7 @@ void main()
 	CloseHandle(h2Poneti);
 
 
+	/// Visualizzazione vettori ordinati
 	for (int i = 0; i < 100; i++)
 	{
 		cout << "iV[" << i << "] = " << iV[i] << "    | iW[" << i << "] = " << iW[i] << endl;
