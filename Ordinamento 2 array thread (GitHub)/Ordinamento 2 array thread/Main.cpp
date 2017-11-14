@@ -22,7 +22,7 @@ Questo programma non  fa  proprio schifo ma e' proprio un bel programmino
 #include"Fossati.h"
 #include"Costanzo.h"
 #include"comparini.h"
-#include"Fantoni.h"
+#include"Fantoni.h" // Include il file di intestazione Fantoni.h
 #include "Fodde.h"
 #include "Poneti.h"
 using namespace std;
@@ -52,8 +52,8 @@ void main()
 	int iV_Fossati1[100], iV_Fossati2[100];
 	int iV_Costanzo1[100], iV_Costanzo2[100];
 	int iV_Compa1[100], iV_Compa2[100];
-	int V1Fantoni[100];
-	int V2Fantoni[100];
+	int V1Fantoni[100]; // Inizializzazione vettore 1 Fantoni
+	int V2Fantoni[100]; // Inizializzazione vettore 2 Fantoni
 	int V1Fodde[100];
 	int V2Fodde[100];
 	int iPoneti1[100];
@@ -86,7 +86,7 @@ void main()
 		iV_Costanzo2[i] = rand() % 1000 + 1;
 		iV_Compa1[i] = rand() % 1000 + 1;
 		iV_Compa2[i] = rand() % 1000 + 1;
-		V1Fantoni[i] = rand() % 1000 + 1;
+		V1Fantoni[i] = rand() % 1000 + 1; //Carica il vettore inserendo valori Random
 		V2Fantoni[i] = rand() % 1000 + 1;
 		V1Fodde[i] = rand() % 1000 + 1;
 		V2Fodde[i] = rand() % 1000 + 1;
@@ -97,7 +97,7 @@ void main()
 
 	/// Per lanciare i thread uso _beginthreadex, e non _beginthread, perché quest'ultimo quando l'esecuzione del thread
 	/// viene terminata velocemente, la funzione si comporta in modo anomalo, e non è più possibile chiudere l'handle del relativo thread
-	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thred
+	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thread
 	HANDLE hOrd2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iW, 0, &threadid); /// Lancio del secondo thread
 
 	H1Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V1Bardazzi);
@@ -130,8 +130,8 @@ void main()
 	HANDLE hCompa1 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa1, 0, &threadid);
 	HANDLE hCompa2 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa2, 0, &threadid);
 	
-	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid);
-	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V2Fantoni, 0, &threadid);
+	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid); //Lancio thread 1 Fantoni
+	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V2Fantoni, 0, &threadid); //Lancio thread 2 Fantoni
 
 	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid);
 	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid);
@@ -197,8 +197,8 @@ void main()
 
 	WaitForSingleObject(H1Fantoni, INFINITE);
 	WaitForSingleObject(H2Fantoni, INFINITE);
-	CloseHandle(H1Fantoni);
-	CloseHandle(H2Fantoni);
+	CloseHandle(H1Fantoni); //Chiude l'HANDLE del Thread H1Fantoni
+	CloseHandle(H2Fantoni); //Chiude l'HANDLE del Thread H2Fantoni
 
 	WaitForSingleObject(H1Fodde, INFINITE);
 	WaitForSingleObject(H2Fodde, INFINITE);
@@ -269,7 +269,7 @@ void main()
 		cout << "iV_Compa1[" << i << "] = " << iV_Compa1[i] << "    | iV_Compa2[" << i << "] = " << iV_Compa2[i] << endl;
 	}
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 100; i++) //Visualizzazione Vettore 1 e Vettore 2 Ordinati Fantoni
 	{
 
 		cout << "V1Fantoni[" << i << "] = " << V1Fantoni[i] << "    | V2Fantoni[" << i << "] = " << V2Fantoni[i] << endl;
