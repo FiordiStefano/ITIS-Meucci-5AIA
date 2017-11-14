@@ -91,7 +91,7 @@ void main()
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
 		V2Franchi[i] = rand() % 1000 + 1;
-		//Complimaneto dei vettori 'Fossati'
+		//Compilamento dei vettori 'Fossati'
 		iV_Fossati1[i] = rand() % 1000 + 1;
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
