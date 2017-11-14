@@ -72,8 +72,8 @@ void main()
 		V2dipirro[i] = rand() % 1000 + 1;
 		iBerlincioni1[i] = rand() % 1000 + 1;
 		iBerlincioni2[i] = rand() % 1000 + 1;
-		V1_DiLuigi[i] = rand() % 1000 + 1; //
-		V2_DiLuigi[i] = rand() % 1000 + 1;
+		V1_DiLuigi[i] = rand() % 1000 + 1; //Compilamento del Vettore V1 con valori random da 1 a 1000
+		V2_DiLuigi[i] = rand() % 1000 + 1; //Compilamento del Vettore V2 con valori random da 1 a 1000
 		V1Fiasconi[i] = rand() % 1000 + 1;
 		V2Fiasconi[i] = rand() % 1000 + 1;
 		V1Pandolfini[i] = rand() % 1000 + 1;
