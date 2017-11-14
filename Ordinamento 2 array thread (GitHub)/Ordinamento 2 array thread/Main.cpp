@@ -54,6 +54,7 @@ void main()
 	//Inizializzazione vettori Fossati
 	int iV_Fossati1[100], iV_Fossati2[100];
 	int iV_Costanzo1[100], iV_Costanzo2[100];
+	// Vettori Comparini : iVCompa1 & iVCompa2
 	int iV_Compa1[100], iV_Compa2[100];
 	int V1Fantoni[100];
 	int V2Fantoni[100];
@@ -89,7 +90,9 @@ void main()
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
 		iV_Costanzo2[i] = rand() % 1000 + 1;
+		//Riempimento Casuale del Vettore iVCompa1
 		iV_Compa1[i] = rand() % 1000 + 1;
+		//Riempimento Casuale del Vettore iVCompa2
 		iV_Compa2[i] = rand() % 1000 + 1;
 		V1Fantoni[i] = rand() % 1000 + 1;
 		V2Fantoni[i] = rand() % 1000 + 1;
@@ -133,7 +136,9 @@ void main()
 	HANDLE hFossati2 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati2, 0, &threadid);
 	HANDLE hCostanzo1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo1, 0, &threadid);
 	HANDLE hCostanzo2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo2, 0, &threadid);
+	// Avvio del primo thread per accedere alla funziona ordinaC e ordinare il vettore iVCompa1 precedentemete riempito in modo casuale
 	HANDLE hCompa1 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa1, 0, &threadid);
+	// Avvio del secondo thread per accedere alla funziona ordinaC e ordinare il vettore iVCompa2 precedentemete riempito in modo casuale
 	HANDLE hCompa2 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa2, 0, &threadid);
 	
 	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid);
@@ -167,9 +172,13 @@ void main()
 	CloseHandle(hOrd1); /// Chiusura handle dei thread
 	CloseHandle(hOrd2);
 
+	// Funzione per aspettare che il thread hCompa1 abbia compiuto tutte le operazioni
 	WaitForSingleObject(hCompa1, INFINITE);
+	// Funzione per aspettare che il thread hCompa2 abbia compiuto tutte le operazioni
 	WaitForSingleObject(hCompa2, INFINITE);
+	// Funzione per arrestare il thread hCompa1
 	CloseHandle(hCompa1);
+	// Funzione per arrestare il thread hCompa2
 	CloseHandle(hCompa2);
 	
 	
@@ -274,6 +283,7 @@ void main()
 	{
 		cout << "iV_Costanzo1[" << i << "] = " << iV_Costanzo1[i] << "    | iV_Costanzo2[" << i << "] = " << iV_Costanzo2[i] << endl;
 	}
+	// For che permette la visualizzazione dei vettori 
 	for (int i = 0; i < 100; i++)
 	{
 		cout << "iV_Compa1[" << i << "] = " << iV_Compa1[i] << "    | iV_Compa2[" << i << "] = " << iV_Compa2[i] << endl;
