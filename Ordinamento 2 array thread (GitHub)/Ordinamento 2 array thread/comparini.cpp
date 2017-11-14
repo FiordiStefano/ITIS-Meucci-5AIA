@@ -1,5 +1,6 @@
 #include<process.h>
 #include<stdlib.h>
+//Funzione che permette l'rdinamento di un vettore
 unsigned int _stdcall ordinaC(void* val)
 {
 	int s;

@@ -1,1 +1,1 @@
-unsigned int _stdcall  FantoniF(void *data);
+unsigned int _stdcall  FantoniF(void *data);  //file di intestazione per la funzione FantoniF
