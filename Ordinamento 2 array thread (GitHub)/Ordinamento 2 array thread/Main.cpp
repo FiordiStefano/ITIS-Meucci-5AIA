@@ -1,5 +1,5 @@
 /**
-@author Fiordi Stefano
+@author Fiordi Stefano + Berlincioni
 @date 21/09/2017
 Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica funzione
 
@@ -22,8 +22,13 @@ Questo programma non  fa  proprio schifo ma e' proprio un bel programmino
 #include"Fossati.h"
 #include"Costanzo.h"
 #include"comparini.h"
-#include"Fantoni.h"
+<<<<<<< HEAD
+#include"Fantoni.h" // Include il file di intestazione Fantoni.h
 #include "Fodde.h"
+=======
+#include"Fantoni.h"
+#include "Fodde.h" //inclusione del file di intestazione
+>>>>>>> a0cbe6c4b0fb0ec561e12b4c603b352669358938
 #include "Poneti.h"
 using namespace std;
 
@@ -43,8 +48,19 @@ void main()
 	//vettori Di Pirro
 	int V1dipirro[100];
 	int V2dipirro[100];
+
+	int iBerlincioni1[100], iBerlincioni2[100]; ///dichiarazone dei vettori
+	int V1Fiasconi[100], V2Fiasconi[100];
+
 	int iBerlincioni1[100], iBerlincioni2[100];
+
+	int V1Fiasconi[100], V2Fiasconi[100];
+	// Vettori Pandolfini
+
 	int V1Fiasconi[100], V2Fiasconi[100]; //Inizializzazione vettori Loris
+
+
+
 	int V1Pandolfini[100];
 	int V2Pandolfini[100];
 	//Var Di Luigi
@@ -57,10 +73,17 @@ void main()
 	int iV_Costanzo1[100], iV_Costanzo2[100];
 	// Vettori Comparini : iVCompa1 & iVCompa2
 	int iV_Compa1[100], iV_Compa2[100];
-	int V1Fantoni[100];
-	int V2Fantoni[100];
+<<<<<<< HEAD
+	int V1Fantoni[100]; // Inizializzazione vettore 1 Fantoni
+	int V2Fantoni[100]; // Inizializzazione vettore 2 Fantoni
 	int V1Fodde[100];
 	int V2Fodde[100];
+=======
+	int V1Fantoni[100];
+	int V2Fantoni[100];
+	int V1Fodde[100]; //inizializzazione vettore1
+	int V2Fodde[100]; //inizializzazione vettore2
+>>>>>>> a0cbe6c4b0fb0ec561e12b4c603b352669358938
 	int iPoneti1[100];
 	int iPoneti2[100];
 
@@ -77,17 +100,25 @@ void main()
 		//inizializzazione vettori Di Pirro con valori randomici
 		V1dipirro[i] = rand() % 1000 + 1;
 		V2dipirro[i] = rand() % 1000 + 1;
+
+		iBerlincioni1[i] = rand() % 1000 + 1; ///valori casuali
+		iBerlincioni2[i] = rand() % 1000 + 1; ///valori casuali
+		V1_DiLuigi[i] = rand() % 1000 + 1;
+		V2_DiLuigi[i] = rand() % 1000 + 1;
+
 		iBerlincioni1[i] = rand() % 1000 + 1;
 		iBerlincioni2[i] = rand() % 1000 + 1;
 		V1_DiLuigi[i] = rand() % 1000 + 1; //Compilamento del Vettore V1 con valori random da 1 a 1000
 		V2_DiLuigi[i] = rand() % 1000 + 1; //Compilamento del Vettore V2 con valori random da 1 a 1000
+
 		V1Fiasconi[i] = rand() % 1000 + 1;
 		V2Fiasconi[i] = rand() % 1000 + 1;
+		// Inserimento
 		V1Pandolfini[i] = rand() % 1000 + 1;
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
 		V2Franchi[i] = rand() % 1000 + 1;
-		//Complimaneto dei vettori 'Fossati'
+		//Compilamento dei vettori 'Fossati'
 		iV_Fossati1[i] = rand() % 1000 + 1;
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
@@ -96,10 +127,10 @@ void main()
 		iV_Compa1[i] = rand() % 1000 + 1;
 		//Riempimento Casuale del Vettore iVCompa2
 		iV_Compa2[i] = rand() % 1000 + 1;
-		V1Fantoni[i] = rand() % 1000 + 1;
+		V1Fantoni[i] = rand() % 1000 + 1; //Carica il vettore inserendo valori Random
 		V2Fantoni[i] = rand() % 1000 + 1;
-		V1Fodde[i] = rand() % 1000 + 1;
-		V2Fodde[i] = rand() % 1000 + 1;
+		V1Fodde[i] = rand() % 1000 + 1; //caricamento vettore1 in modo random
+		V2Fodde[i] = rand() % 1000 + 1; //caricamento vettore2 in modo random
 
 		iPoneti1[i] = rand() % 1000 + 1;
 		iPoneti2[i] = rand() % 1000 + 1;
@@ -107,7 +138,7 @@ void main()
 
 	/// Per lanciare i thread uso _beginthreadex, e non _beginthread, perché quest'ultimo quando l'esecuzione del thread
 	/// viene terminata velocemente, la funzione si comporta in modo anomalo, e non è più possibile chiudere l'handle del relativo thread
-	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thred
+	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thread
 	HANDLE hOrd2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iW, 0, &threadid); /// Lancio del secondo thread
 	//start dei thread Bardazzi																//start dei thread Bardazzi
 	H1Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V1Bardazzi);
@@ -118,8 +149,13 @@ void main()
 	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,&threadid);
 	
 	
-	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
+	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);///Lancio dei due thread
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
+
+
+	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
+	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
+	// Lancio i thread
 
 	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi); //creazione primo thread
 	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi); //creazione secondo thread
@@ -143,11 +179,11 @@ void main()
 	// Avvio del secondo thread per accedere alla funziona ordinaC e ordinare il vettore iVCompa2 precedentemete riempito in modo casuale
 	HANDLE hCompa2 = (HANDLE)_beginthreadex(NULL, 0, &ordinaC, iV_Compa2, 0, &threadid);
 	
-	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid);
-	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V2Fantoni, 0, &threadid);
+	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid); //Lancio thread 1 Fantoni
+	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V2Fantoni, 0, &threadid); //Lancio thread 2 Fantoni
 
-	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid);
-	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid);
+	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid); //lancio del thread H1
+	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid); //lancio del thread H2
 
 	HANDLE h1Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti1, 0, &threadid);
 	HANDLE h2Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti2, 0, &threadid);
@@ -188,16 +224,17 @@ void main()
 	CloseHandle(hCompa2);
 	
 	
-	WaitForSingleObject(hBerlincioni1, INFINITE);
+	WaitForSingleObject(hBerlincioni1, INFINITE);  ///Attendere la fine dei thread
 	WaitForSingleObject(hBerlincioni2, INFINITE);
-	CloseHandle(hBerlincioni1);
+	CloseHandle(hBerlincioni1); ///chiusura dei thread
 	CloseHandle(hBerlincioni2);
 
-	WaitForSingleObject(h1Fiasconi, INFINITE);
+	WaitForSingleObject(h1Fiasconi, INFINITE); 
 	WaitForSingleObject(h2Fiasconi, INFINITE);
-
+	// Attesa thread Pandolfini
 	WaitForSingleObject(Pandolfinith1, INFINITE);
 	WaitForSingleObject(Pandolfinith2, INFINITE);
+	 // Chiusura thread Pandolfini
 	CloseHandle(Pandolfinith1);
 	CloseHandle(Pandolfinith2);
 
@@ -219,13 +256,13 @@ void main()
 
 	WaitForSingleObject(H1Fantoni, INFINITE);
 	WaitForSingleObject(H2Fantoni, INFINITE);
-	CloseHandle(H1Fantoni);
-	CloseHandle(H2Fantoni);
+	CloseHandle(H1Fantoni); //Chiude l'HANDLE del Thread H1Fantoni
+	CloseHandle(H2Fantoni); //Chiude l'HANDLE del Thread H2Fantoni
 
 	WaitForSingleObject(H1Fodde, INFINITE);
 	WaitForSingleObject(H2Fodde, INFINITE);
-	CloseHandle(H1Fodde);
-	CloseHandle(H2Fodde);
+	CloseHandle(H1Fodde); //chiusura Handle H1
+	CloseHandle(H2Fodde); //chiusura Handle H2
 
 	WaitForSingleObject(h1Poneti, INFINITE);
 	WaitForSingleObject(h2Poneti, INFINITE);
@@ -252,7 +289,7 @@ void main()
 	
 		cout << "V1-DiPirro[" << i << "] = " << V1dipirro[i] << "    | V2-DiPirro[" << i << "] = " << V2dipirro[i] << endl;
 	}
-	
+	///visualizzione finale del vettore
 	for (int i = 0; i < 100; i++)
 	{
 
@@ -269,6 +306,7 @@ void main()
 	{
 		cout << "V1Fiasconi [" << i << "] = " << V1Fiasconi[i] << "    | V2Fiasconi[" << i << "] = " << V2Fiasconi[i] << endl;
 	}
+	// Output vettore Pandolfini
 	for (int i = 0; i < 100; i++)
 	{
 
@@ -295,14 +333,14 @@ void main()
 		cout << "iV_Compa1[" << i << "] = " << iV_Compa1[i] << "    | iV_Compa2[" << i << "] = " << iV_Compa2[i] << endl;
 	}
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 100; i++) //Visualizzazione Vettore 1 e Vettore 2 Ordinati Fantoni
 	{
 
 		cout << "V1Fantoni[" << i << "] = " << V1Fantoni[i] << "    | V2Fantoni[" << i << "] = " << V2Fantoni[i] << endl;
 	}
 
 	for (int i = 0; i < 100; i++)
-	{
+	{ //visualizzazione vettore1 e vettore2
 
 		cout << "V1Fodde[" << i << "] = " << V1Fodde[i] << "    | V2Fodde[" << i << "] = " << V2Fodde[i] << endl;
 	}

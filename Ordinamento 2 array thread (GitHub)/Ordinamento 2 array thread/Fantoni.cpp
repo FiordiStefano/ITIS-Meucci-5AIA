@@ -4,6 +4,8 @@
 #include"Fantoni.h"
 using namespace std;
 
+//Funzione utilizzata per ordinare il vettore in ordine crescente 
+
 unsigned _stdcall FantoniF(void *data)
 {
 	int *V = (int*)data;
@@ -14,9 +16,9 @@ unsigned _stdcall FantoniF(void *data)
 		cambio = false;
 
 
-		for (int i = 0; i < 99 ; i++)
+		for (int i = 0; i < 99 ; i++) //Scorre il vettore 
 		{
-			if (V[i + 1] < V[i])
+			if (V[i + 1] < V[i]) // Controlla se la casella successiva del vettore è maggiore della casella corrente 
 			{
 				int x = V[i + 1];
 				V[i + 1] = V[i];
@@ -28,6 +30,6 @@ unsigned _stdcall FantoniF(void *data)
 
 	} while (cambio == true);
 
-	_endthreadex(0);
+	_endthreadex(0); //Termina il Thread
 	return 0;
 }
