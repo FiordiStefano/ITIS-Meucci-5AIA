@@ -37,6 +37,7 @@ void main()
 	unsigned threadid;
 	//Handle Bardazzi e Di Pirro
 	HANDLE H1Bardazzi, H2Bardazzi, H1dipirro, H2dipirro;
+	//inizializzazione vettori Bardazzi
 	int V1Bardazzi[100];
 	int V2Bardazzi[100];
 	//vettori Di Pirro
@@ -70,6 +71,7 @@ void main()
 	{
 		iV[i] = rand() % 1000 + 1; /// Riempimento vettori Fiordi
 		iW[i] = rand() % 1000 + 1;
+		//riempimento casuale vettori Bardazzi
 		V1Bardazzi[i] = rand() % 1000 + 1;
 		V2Bardazzi[i] = rand() % 1000 + 1;
 		//inizializzazione vettori Di Pirro con valori randomici
@@ -107,7 +109,7 @@ void main()
 	/// viene terminata velocemente, la funzione si comporta in modo anomalo, e non è più possibile chiudere l'handle del relativo thread
 	HANDLE hOrd1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iV, 0, &threadid); /// Lancio del primo thred
 	HANDLE hOrd2 = (HANDLE)_beginthreadex(NULL, 0, &thOrdFiordi, iW, 0, &threadid); /// Lancio del secondo thread
-
+	//start dei thread Bardazzi																//start dei thread Bardazzi
 	H1Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V1Bardazzi);
 	H2Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V2Bardazzi);
 	
@@ -163,8 +165,12 @@ void main()
 	CloseHandle(T1_DL); //Liberazione del Thread1
 	CloseHandle(T2_DL); //Liberazione del Thread2
 	
+	//attesa completamento thread
 	WaitForSingleObject(H1Bardazzi, INFINITE);
 	WaitForSingleObject(H2Bardazzi, INFINITE);
+	//chiusura thread Bardazzi
+	CloseHandle(H1Bardazzi);
+	CloseHandle(H2Bardazzi);
 
 
 	WaitForSingleObject(hOrd1, INFINITE); /// Attesa della terminazione dei thread
@@ -236,7 +242,7 @@ void main()
 
 	for (int i = 0; i < 100; i++)
 	{
-	
+		//output dei vettori Bardazzi
 		cout << "V1Bardazzi[" << i << "] = " << V1Bardazzi[i] << "    | V2Bardazzi[" << i << "] = " << V2Bardazzi[i] << endl;
 	}
 	
