@@ -23,7 +23,7 @@ Questo programma non  fa  proprio schifo ma e' proprio un bel programmino
 #include"Costanzo.h"
 #include"comparini.h"
 #include"Fantoni.h"
-#include "Fodde.h"
+#include "Fodde.h" //inclusione del file di intestazione
 #include "Poneti.h"
 using namespace std;
 
@@ -54,8 +54,8 @@ void main()
 	int iV_Compa1[100], iV_Compa2[100];
 	int V1Fantoni[100];
 	int V2Fantoni[100];
-	int V1Fodde[100];
-	int V2Fodde[100];
+	int V1Fodde[100]; //inizializzazione vettore1
+	int V2Fodde[100]; //inizializzazione vettore2
 	int iPoneti1[100];
 	int iPoneti2[100];
 
@@ -88,8 +88,8 @@ void main()
 		iV_Compa2[i] = rand() % 1000 + 1;
 		V1Fantoni[i] = rand() % 1000 + 1;
 		V2Fantoni[i] = rand() % 1000 + 1;
-		V1Fodde[i] = rand() % 1000 + 1;
-		V2Fodde[i] = rand() % 1000 + 1;
+		V1Fodde[i] = rand() % 1000 + 1; //caricamento vettore1 in modo random
+		V2Fodde[i] = rand() % 1000 + 1; //caricamento vettore2 in modo random
 
 		iPoneti1[i] = rand() % 1000 + 1;
 		iPoneti2[i] = rand() % 1000 + 1;
@@ -133,8 +133,8 @@ void main()
 	HANDLE H1Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V1Fantoni, 0, &threadid);
 	HANDLE H2Fantoni = (HANDLE)_beginthreadex(NULL, 0, FantoniF, V2Fantoni, 0, &threadid);
 
-	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid);
-	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid);
+	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid); //lancio del thread H1
+	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid); //lancio del thread H2
 
 	HANDLE h1Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti1, 0, &threadid);
 	HANDLE h2Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti2, 0, &threadid);
@@ -202,8 +202,8 @@ void main()
 
 	WaitForSingleObject(H1Fodde, INFINITE);
 	WaitForSingleObject(H2Fodde, INFINITE);
-	CloseHandle(H1Fodde);
-	CloseHandle(H2Fodde);
+	CloseHandle(H1Fodde); //chiusura Handle H1
+	CloseHandle(H2Fodde); //chiusura Handle H2
 
 	WaitForSingleObject(h1Poneti, INFINITE);
 	WaitForSingleObject(h2Poneti, INFINITE);
@@ -276,7 +276,7 @@ void main()
 	}
 
 	for (int i = 0; i < 100; i++)
-	{
+	{ //visualizzazione vettore1 e vettore2
 
 		cout << "V1Fodde[" << i << "] = " << V1Fodde[i] << "    | V2Fodde[" << i << "] = " << V2Fodde[i] << endl;
 	}
