@@ -1,5 +1,5 @@
 /**
-@author Fiordi Stefano
+@author Fiordi Stefano + Berlincioni
 @date 21/09/2017
 Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica funzione
 
@@ -40,7 +40,7 @@ void main()
 	int V2Bardazzi[100];
 	int V1dipirro[100];
 	int V2dipirro[100];
-	int iBerlincioni1[100], iBerlincioni2[100];
+	int iBerlincioni1[100], iBerlincioni2[100]; ///dichiarazone dei vettori
 	int V1Fiasconi[100], V2Fiasconi[100];
 	int V1Pandolfini[100];
 	int V2Pandolfini[100];
@@ -70,8 +70,8 @@ void main()
 		V2Bardazzi[i] = rand() % 1000 + 1;
 		V1dipirro[i] = rand() % 1000 + 1;
 		V2dipirro[i] = rand() % 1000 + 1;
-		iBerlincioni1[i] = rand() % 1000 + 1;
-		iBerlincioni2[i] = rand() % 1000 + 1;
+		iBerlincioni1[i] = rand() % 1000 + 1; ///valori casuali
+		iBerlincioni2[i] = rand() % 1000 + 1; ///valori casuali
 		V1_DiLuigi[i] = rand() % 1000 + 1;
 		V2_DiLuigi[i] = rand() % 1000 + 1;
 		V1Fiasconi[i] = rand() % 1000 + 1;
@@ -107,7 +107,7 @@ void main()
 	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,&threadid);
 	
 	
-	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
+	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);///Lancio dei due thread
 	HANDLE hBerlincioni2 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni2, 0, &threadid);
 
 	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
@@ -166,12 +166,12 @@ void main()
 	CloseHandle(hCompa2);
 	
 	
-	WaitForSingleObject(hBerlincioni1, INFINITE);
+	WaitForSingleObject(hBerlincioni1, INFINITE);  ///Attendere la fine dei thread
 	WaitForSingleObject(hBerlincioni2, INFINITE);
-	CloseHandle(hBerlincioni1);
+	CloseHandle(hBerlincioni1); ///chiusura dei thread
 	CloseHandle(hBerlincioni2);
 
-	WaitForSingleObject(h1Fiasconi, INFINITE);
+	WaitForSingleObject(h1Fiasconi, INFINITE); 
 	WaitForSingleObject(h2Fiasconi, INFINITE);
 
 	WaitForSingleObject(Pandolfinith1, INFINITE);
@@ -228,7 +228,7 @@ void main()
 	
 		cout << "V1-DiPirro[" << i << "] = " << V1dipirro[i] << "    | V2-DiPirro[" << i << "] = " << V2dipirro[i] << endl;
 	}
-	
+	///visualizzione finale del vettore
 	for (int i = 0; i < 100; i++)
 	{
 
