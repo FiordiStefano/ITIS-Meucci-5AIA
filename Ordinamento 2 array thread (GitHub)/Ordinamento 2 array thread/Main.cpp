@@ -35,9 +35,11 @@ void main()
 	srand(time(NULL));
 	int iV[100], iW[100];
 	unsigned threadid;
+	//Handle Bardazzi e Di Pirro
 	HANDLE H1Bardazzi, H2Bardazzi, H1dipirro, H2dipirro;
 	int V1Bardazzi[100];
 	int V2Bardazzi[100];
+	//vettori Di Pirro
 	int V1dipirro[100];
 	int V2dipirro[100];
 	int iBerlincioni1[100], iBerlincioni2[100];
@@ -68,6 +70,7 @@ void main()
 		iW[i] = rand() % 1000 + 1;
 		V1Bardazzi[i] = rand() % 1000 + 1;
 		V2Bardazzi[i] = rand() % 1000 + 1;
+		//inizializzazione vettori Di Pirro con valori randomici
 		V1dipirro[i] = rand() % 1000 + 1;
 		V2dipirro[i] = rand() % 1000 + 1;
 		iBerlincioni1[i] = rand() % 1000 + 1;
@@ -103,6 +106,7 @@ void main()
 	H1Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V1Bardazzi);
 	H2Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V2Bardazzi);
 	
+	//faccio partire i thread di Di Pirro
 	H1dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V1dipirro, 0,&threadid);
 	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,&threadid);
 	
@@ -140,6 +144,7 @@ void main()
 	HANDLE h2Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti2, 0, &threadid);
 
 
+	//Aspetto la fine dei thread e chiudo gli handle di Di Pirro
 	WaitForSingleObject(H1dipirro, INFINITE);
 	WaitForSingleObject(H2dipirro, INFINITE);
 	CloseHandle(H1dipirro);
@@ -223,6 +228,7 @@ void main()
 		cout << "V1Bardazzi[" << i << "] = " << V1Bardazzi[i] << "    | V2Bardazzi[" << i << "] = " << V2Bardazzi[i] << endl;
 	}
 	
+	//Visualizzazione Vettori Di Pirro
 	for (int i = 0; i < 100; i++)
 	{
 	
