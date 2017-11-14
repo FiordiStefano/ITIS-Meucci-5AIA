@@ -22,13 +22,10 @@ Questo programma non  fa  proprio schifo ma e' proprio un bel programmino
 #include"Fossati.h"
 #include"Costanzo.h"
 #include"comparini.h"
-<<<<<<< HEAD
 #include"Fantoni.h" // Include il file di intestazione Fantoni.h
 #include "Fodde.h"
-=======
 #include"Fantoni.h"
 #include "Fodde.h" //inclusione del file di intestazione
->>>>>>> a0cbe6c4b0fb0ec561e12b4c603b352669358938
 #include "Poneti.h"
 using namespace std;
 
@@ -73,17 +70,14 @@ void main()
 	int iV_Costanzo1[100], iV_Costanzo2[100];
 	// Vettori Comparini : iVCompa1 & iVCompa2
 	int iV_Compa1[100], iV_Compa2[100];
-<<<<<<< HEAD
 	int V1Fantoni[100]; // Inizializzazione vettore 1 Fantoni
 	int V2Fantoni[100]; // Inizializzazione vettore 2 Fantoni
 	int V1Fodde[100];
 	int V2Fodde[100];
-=======
 	int V1Fantoni[100];
 	int V2Fantoni[100];
 	int V1Fodde[100]; //inizializzazione vettore1
 	int V2Fodde[100]; //inizializzazione vettore2
->>>>>>> a0cbe6c4b0fb0ec561e12b4c603b352669358938
 	int iPoneti1[100];
 	int iPoneti2[100];
 
