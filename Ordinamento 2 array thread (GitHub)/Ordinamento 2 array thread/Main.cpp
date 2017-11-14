@@ -51,6 +51,7 @@ void main()
 	int V2_DiLuigi[100];
 	int V1Franchi[100];
 	int V2Franchi[100];
+	//Inizializzazione vettori Fossati
 	int iV_Fossati1[100], iV_Fossati2[100];
 	int iV_Costanzo1[100], iV_Costanzo2[100];
 	int iV_Compa1[100], iV_Compa2[100];
@@ -83,6 +84,7 @@ void main()
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
 		V2Franchi[i] = rand() % 1000 + 1;
+		//Complimaneto dei vettori 'Fossati'
 		iV_Fossati1[i] = rand() % 1000 + 1;
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
