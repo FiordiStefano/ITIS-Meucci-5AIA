@@ -51,6 +51,7 @@ void main()
 	int V2_DiLuigi[100];
 	int V1Franchi[100];
 	int V2Franchi[100];
+	//Inizializzazione vettori Fossati
 	int iV_Fossati1[100], iV_Fossati2[100];
 	int iV_Costanzo1[100], iV_Costanzo2[100];
 	// Vettori Comparini : iVCompa1 & iVCompa2
@@ -84,6 +85,7 @@ void main()
 		V2Pandolfini[i] = rand() % 1000 + 1;
 		V1Franchi[i] = rand() % 1000 + 1;
 		V2Franchi[i] = rand() % 1000 + 1;
+		//Complimaneto dei vettori 'Fossati'
 		iV_Fossati1[i] = rand() % 1000 + 1;
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
@@ -129,7 +131,7 @@ void main()
 	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid);
 	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid);
 
-
+	//Crezione e lancio dei Thread
 	HANDLE hFossati1 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati1, 0, &threadid);
 	HANDLE hFossati2 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati2, 0, &threadid);
 	HANDLE hCostanzo1 = (HANDLE)_beginthreadex(NULL, 0, &thOrdCostanzo, iV_Costanzo1, 0, &threadid);
@@ -198,7 +200,7 @@ void main()
 	CloseHandle(h1Franchi);
 	CloseHandle(h2Franchi);
 
-
+	//Si aspetta un tempo infinito la fine dei thread, per poi chiuderli.
 	WaitForSingleObject(hFossati1, INFINITE);
 	WaitForSingleObject(hFossati2, INFINITE);
 	CloseHandle(hFossati1);
@@ -272,6 +274,7 @@ void main()
 		cout << "V1Franchi[" << i << "] = " << V1Franchi[i] << "    | V2Franchi[" << i << "] = " << V2Franchi[i] << endl;
 	}
 
+	//Vengono mostrati i 2 vettori ordinati.
 	for (int i = 0; i < 100; i++)
 	{
 		cout << "iV_Fossati1[" << i << "] = " << iV_Fossati1[i] << "    | iV_Fossati2[" << i << "] = " << iV_Fossati2[i] << endl;
