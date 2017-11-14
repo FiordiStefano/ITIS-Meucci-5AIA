@@ -1,5 +1,11 @@
+#include<iostream>
+#include<Windows.h>
+#include<process.h>
+#include"Poneti.h"
+using namespace std;
+
 //Funzione 
-void threadPoneti(void *data)
+unsigned int __stdcall threadPoneti(void *data)
 {
 
 	int *V = (int*)data;
@@ -24,4 +30,6 @@ void threadPoneti(void *data)
 
 	} while (cambio == true);
 
+	_endthreadex(0);
+	return(0);
 }

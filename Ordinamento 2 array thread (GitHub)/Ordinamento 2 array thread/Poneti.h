@@ -3,4 +3,4 @@
 
 
 
-void threadPoneti(void *data);
+unsigned int __stdcall threadPoneti(void *data);

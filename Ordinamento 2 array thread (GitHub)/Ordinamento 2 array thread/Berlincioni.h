@@ -3,4 +3,4 @@
 */
 
 #pragma once
-unsigned __stdcall Berli(void * data)
+unsigned __stdcall Berli(void * data);

@@ -1,1 +1,1 @@
-unsigned Thread_DiLuigi(void * data);
+unsigned int __stdcall Thread_DiLuigi(void * data);

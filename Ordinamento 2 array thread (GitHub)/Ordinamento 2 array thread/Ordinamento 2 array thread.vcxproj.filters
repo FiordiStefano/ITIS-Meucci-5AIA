@@ -24,16 +24,37 @@
     <ClCompile Include="Bardazzi.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="franchi.cpp">
+    <ClCompile Include="Berlincioni.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Desktop\comparini.cpp">
+    <ClCompile Include="comparini.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Costanzo.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="DiLuigi.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="dipirro.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Fantoni.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="Fiasconi.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
     <ClCompile Include="Fodde.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Fossati.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="franchi.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Pandolfini.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="Poneti.cpp">
@@ -45,18 +66,39 @@
       <Filter>File di origine</Filter>
     </ClInclude>
     <ClInclude Include="Bardazzi.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="franchi.h">
       <Filter>File di origine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Desktop\comparini.h">
-      <Filter>File di intestazione</Filter>
+    <ClInclude Include="Berlincioni.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="comparini.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="Costanzo.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="DiLuigi.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="dipirro.h">
+      <Filter>File di origine</Filter>
     </ClInclude>
     <ClInclude Include="Fantoni.h">
       <Filter>File di origine</Filter>
     </ClInclude>
+    <ClInclude Include="Fiasconi.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
     <ClInclude Include="Fodde.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="Fossati.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="franchi.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="Pandolfini.h">
       <Filter>File di origine</Filter>
     </ClInclude>
     <ClInclude Include="Poneti.h">

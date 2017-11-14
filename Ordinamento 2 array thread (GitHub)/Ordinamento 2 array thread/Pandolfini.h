@@ -3,4 +3,4 @@ Intestazione
  Marco Pandolfini
 */
 
-unsigned int __stdcall ordinamento(void* x)
+unsigned int __stdcall ordinamento(void* x);

@@ -36,5 +36,7 @@ unsigned int __stdcall ordinamento(void* x)
 			}
 		}
 	}
+
+	_endthreadex(0);
 	return 0;
 }

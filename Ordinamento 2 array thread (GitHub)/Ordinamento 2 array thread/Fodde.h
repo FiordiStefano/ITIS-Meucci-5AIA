@@ -1,1 +1,1 @@
-unsigned _stdcall FoddeF(void *data)
+unsigned _stdcall FoddeF(void *data);

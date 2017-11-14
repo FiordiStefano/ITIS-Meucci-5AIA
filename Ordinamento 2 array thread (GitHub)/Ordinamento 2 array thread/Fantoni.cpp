@@ -1,3 +1,9 @@
+#include<iostream>
+#include<Windows.h>
+#include<process.h>
+#include"Fantoni.h"
+using namespace std;
+
 unsigned _stdcall FantoniF(void *data)
 {
 	int *V = (int*)data;
@@ -22,4 +28,6 @@ unsigned _stdcall FantoniF(void *data)
 
 	} while (cambio == true);
 
+	_endthreadex(0);
+	return 0;
 }

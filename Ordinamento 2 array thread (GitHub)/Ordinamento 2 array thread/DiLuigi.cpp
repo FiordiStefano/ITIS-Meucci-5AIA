@@ -10,7 +10,7 @@ Funzione di ordinamento di due vettori con l' utilizzo di 2 thread
 
 using namespace std;
 
-unsigned Thread_DiLuigi(void * data)
+unsigned int __stdcall Thread_DiLuigi(void * data)
 {
 	int * V_DL = (int *)data;
 	
@@ -26,5 +26,6 @@ unsigned Thread_DiLuigi(void * data)
 			}
 		}
 	}
-	_endthread(); //Termino il Thread
+	_endthreadex(0); //Termino il Thread
+	return (0);
 }

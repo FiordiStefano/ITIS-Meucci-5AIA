@@ -100,8 +100,8 @@ void main()
 	H1Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V1Bardazzi);
 	H2Bardazzi = (HANDLE)_beginthread(Thread, 0, (void*)V2Bardazzi);
 	
-	H1dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V1dipirro, 0,(void*)V1dipirro);
-	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,(void*)V2dipirro);
+	H1dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V1dipirro, 0,&threadid);
+	H2dipirro = (HANDLE)_beginthreadex(NULL, 0, &ord_dipirro, V2dipirro, 0,&threadid);
 	
 	
 	HANDLE hBerlincioni1 = (HANDLE)_beginthreadex(NULL, 0, &Berli, iBerlincioni1, 0, &threadid);
@@ -110,11 +110,11 @@ void main()
 	HANDLE h1Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V1Fiasconi);
 	HANDLE h2Fiasconi = (HANDLE)_beginthread(&Ordina, 0, V2Fiasconi);
 
-	HANDLE Pandolfinith1 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V1Panolfini, 0, &threadid);
+	HANDLE Pandolfinith1 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V1Pandolfini, 0, &threadid);
 	HANDLE Pandolfinith2 = (HANDLE)_beginthreadex(NULL, 0, &ordinamento, V2Pandolfini, 0, &threadid);
 	//Di Luigi - Start
-	T1_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V1_DiLuigi);
-	T2_DL = (HANDLE)_beginthread(&Thread_DiLuigi, 0, (void*)V2_DiLuigi);	
+	T1_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V1_DiLuigi, 0, &threadid);
+	T2_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V2_DiLuigi, 0, &threadid);	
 
 	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid);
 	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid);
@@ -133,8 +133,8 @@ void main()
 	HANDLE H1Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V1Fodde, 0, &threadid);
 	HANDLE H2Fodde = (HANDLE)_beginthreadex(NULL, 0, FoddeF, V2Fodde, 0, &threadid);
 
-	HANDLE hPoneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti1, 0, &threadid);
-	HANDLE hPoneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti2, 0, &threadid);
+	HANDLE h1Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti1, 0, &threadid);
+	HANDLE h2Poneti = (HANDLE)_beginthreadex(NULL, 0, &threadPoneti, iPoneti2, 0, &threadid);
 
 
 	WaitForSingleObject(H1dipirro, INFINITE);
@@ -173,8 +173,8 @@ void main()
 
 	WaitForSingleObject(Pandolfinith1, INFINITE);
 	WaitForSingleObject(Pandolfinith2, INFINITE);
-	CloseHandle((Pandolfinith1);
-	CloseHandle((Pandolfinith2);
+	CloseHandle(Pandolfinith1);
+	CloseHandle(Pandolfinith2);
 
 	WaitForSingleObject(h1Franchi, INFINITE);
 	WaitForSingleObject(h2Franchi, INFINITE);
@@ -183,11 +183,12 @@ void main()
 
 
 	WaitForSingleObject(hFossati1, INFINITE);
-	WaitForSignleObject(hFossati2, INFINITE);
+	WaitForSingleObject(hFossati2, INFINITE);
 	CloseHandle(hFossati1);
 	CloseHandle(hFossati2);
+
 	WaitForSingleObject(hCostanzo1, INFINITE);
-	WaitForSignleObject(hCostanzo2, INFINITE);
+	WaitForSingleObject(hCostanzo2, INFINITE);
 	CloseHandle(hCostanzo1);
 	CloseHandle(hCostanzo2);
 
@@ -200,10 +201,11 @@ void main()
 	WaitForSingleObject(H2Fodde, INFINITE);
 	CloseHandle(H1Fodde);
 	CloseHandle(H2Fodde);
-	WaitForSingleObject(hPoneti, INFINITE);
-	WaitForSingleObject(hPoneti, INFINITE);
-	CloseHandle(hPoneti);
-	CloseHandle(hPoneti);
+
+	WaitForSingleObject(h1Poneti, INFINITE);
+	WaitForSingleObject(h2Poneti, INFINITE);
+	CloseHandle(h1Poneti);
+	CloseHandle(h2Poneti);
 
 
 	for (int i = 0; i < 100; i++)

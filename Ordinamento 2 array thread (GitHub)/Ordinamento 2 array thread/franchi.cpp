@@ -1,5 +1,7 @@
 #include<process.h>
 #include<stdio.h>
+#include"franchi.h"
+using namespace std;
 
 unsigned  _stdcall ordinafranchi(void* val)
 {
@@ -18,6 +20,6 @@ unsigned  _stdcall ordinafranchi(void* val)
 			}
 		}
 	}
-	_endthread();
-	//return 0;
+	_endthreadex(0);
+	return 0;
 }

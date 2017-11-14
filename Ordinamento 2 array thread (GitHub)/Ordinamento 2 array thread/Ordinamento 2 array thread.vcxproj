@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,32 +22,32 @@
     <ProjectGuid>{17BB15F8-6786-4D39-88E7-7C3EE56F63A9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Ordinamento2arraythread</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -146,22 +146,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Desktop\comparini.cpp" />
     <ClCompile Include="Bardazzi.cpp" />
+    <ClCompile Include="Berlincioni.cpp" />
+    <ClCompile Include="comparini.cpp" />
+    <ClCompile Include="Costanzo.cpp" />
+    <ClCompile Include="DiLuigi.cpp" />
+    <ClCompile Include="dipirro.cpp" />
     <ClCompile Include="Fantoni.cpp" />
+    <ClCompile Include="Fiasconi.cpp" />
     <ClCompile Include="Fiordi.cpp" />
     <ClCompile Include="Fodde.cpp" />
+    <ClCompile Include="Fossati.cpp" />
     <ClCompile Include="franchi.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Pandolfini.cpp" />
     <ClCompile Include="Poneti.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Desktop\comparini.h" />
     <ClInclude Include="Bardazzi.h" />
+    <ClInclude Include="Berlincioni.h" />
+    <ClInclude Include="comparini.h" />
+    <ClInclude Include="Costanzo.h" />
+    <ClInclude Include="DiLuigi.h" />
+    <ClInclude Include="dipirro.h" />
     <ClInclude Include="Fantoni.h" />
+    <ClInclude Include="Fiasconi.h" />
     <ClInclude Include="Fiordi.h" />
     <ClInclude Include="Fodde.h" />
+    <ClInclude Include="Fossati.h" />
     <ClInclude Include="franchi.h" />
+    <ClInclude Include="Pandolfini.h" />
     <ClInclude Include="Poneti.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
