@@ -5,6 +5,7 @@ Ordinamento di due vettori dichiarati nel main con 2 thread utilizzando un'unica
 
 Questo programma non  fa  proprio schifo ma e' proprio un bel programmino
 
+
 */
 
 #include<iostream>
@@ -47,7 +48,9 @@ void main()
 	//Var Di Luigi
 	int V1_DiLuigi[100];
 	int V2_DiLuigi[100];
+	/**inizializzo il mio v1Franchi*/
 	int V1Franchi[100];
+	/**inizializzo il mio v2Franchi*/
 	int V2Franchi[100];
 	int iV_Fossati1[100], iV_Fossati2[100];
 	int iV_Costanzo1[100], iV_Costanzo2[100];
@@ -78,8 +81,8 @@ void main()
 		V2Fiasconi[i] = rand() % 1000 + 1;
 		V1Pandolfini[i] = rand() % 1000 + 1;
 		V2Pandolfini[i] = rand() % 1000 + 1;
-		V1Franchi[i] = rand() % 1000 + 1;
-		V2Franchi[i] = rand() % 1000 + 1;
+		V1Franchi[i] = rand() % 1000 + 1; /**riempimento vettore 1 Franchi*/
+		V2Franchi[i] = rand() % 1000 + 1; /**riempimnto vettore 2 Franchi*/
 		iV_Fossati1[i] = rand() % 1000 + 1;
 		iV_Fossati2[i] = rand() % 1000 + 1;
 		iV_Costanzo1[i] = rand() % 1000 + 1;
@@ -119,8 +122,10 @@ void main()
 	T1_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V1_DiLuigi, 0, &threadid);
 	T2_DL = (HANDLE)_beginthreadex(NULL, 0, &Thread_DiLuigi, (void*)V2_DiLuigi, 0, &threadid);	
 
-	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid);
-	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid);
+	/**primo thread che chiama la funzione ordinafranchi*/
+	HANDLE h1Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V1Franchi, 0, &threadid); 
+	/**secondo thread che chiama la funzione ordinafranchi*/
+	HANDLE h2Franchi = (HANDLE)_beginthreadex(NULL, 0, ordinafranchi, V2Franchi, 0, &threadid); 
 
 
 	HANDLE hFossati1 = (HANDLE)_beginthreadex(NULL, 0, &FossatiOrd, iV_Fossati1, 0, &threadid);
@@ -179,10 +184,13 @@ void main()
 	CloseHandle(Pandolfinith1);
 	CloseHandle(Pandolfinith2);
 
+	/**attendono che la funzione finisca per entrambi i thread*/
 	WaitForSingleObject(h1Franchi, INFINITE);
 	WaitForSingleObject(h2Franchi, INFINITE);
+	/**chiude l'handle h1Franchi*/
 	CloseHandle(h1Franchi);
-	CloseHandle(h2Franchi);
+	/**chiude l'handle h2Franchi*/
+	CloseHandle(h2Franchi); 
 
 
 	WaitForSingleObject(hFossati1, INFINITE);
@@ -250,6 +258,7 @@ void main()
 
 		cout << "V1Pandolfini[" << i << "] = " << V1Pandolfini[i] << "    | V2Pandolfini[" << i << "] = " << V2Pandolfini[i] << endl;
 	}
+	/**mostra i 2 vettori (Franchi) ordinati*/
 	for (int i = 0; i < 100; i++)
 	{
 
